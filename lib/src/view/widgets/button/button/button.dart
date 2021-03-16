@@ -6,6 +6,7 @@ import 'package:proffy/src/view/widgets/button/icon_text_button/styles.dart';
 class Button extends StatelessWidget with IconTextButtonStyles {
   final Color color;
   final String text;
+  final bool loading;
   final void Function() onTap;
 
   Button(
@@ -13,6 +14,7 @@ class Button extends StatelessWidget with IconTextButtonStyles {
     Key key,
     this.color,
     this.onTap,
+    this.loading = false,
   }) : super(key: key);
 
   @override
@@ -21,7 +23,9 @@ class Button extends StatelessWidget with IconTextButtonStyles {
       height: 56,
       child: ElevatedButton(
         style: buttonStyle(color ?? Pallete.secondary),
-        child: Text(text, style: textStyle()),
+        child: loading
+            ? CircularProgressIndicator(backgroundColor: Pallete.primary)
+            : Text(text, style: textStyle()),
         onPressed: onTap,
       ),
     );

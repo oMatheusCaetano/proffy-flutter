@@ -59,7 +59,13 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 30),
-                  Button('Entrar', onTap: controller.handleLoginButtonClick),
+                  Obx(
+                    () => Button(
+                      'Entrar',
+                      onTap: controller.handleLoginButtonClick,
+                      loading: controller.loading.value,
+                    ),
+                  ),
                   SizedBox(height: 30),
                   LinkButton(
                     'Ainda não possui uma conta? ',

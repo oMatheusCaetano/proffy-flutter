@@ -18,8 +18,14 @@ class AuthUserDataSourceImpl implements AuthUserDataSource {
             email: user.email,
             password: user.password,
           );
-      print('Credentials');
-      print(credentials);
+
+      final userData = await this
+          ._firestore
+          .collection('users')
+          .doc(credentials.user.uid)
+          .get();
+
+      return User.fromJson(userData.data());
     } on firebaseAuth.FirebaseAuthException catch (exception) {
       throw FormDataException(exception.message);
     }

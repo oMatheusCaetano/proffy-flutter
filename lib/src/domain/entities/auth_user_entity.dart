@@ -5,11 +5,12 @@ abstract class AuthUserEntity extends UserEntity {
   UserType _type = UserType.Auth;
 
   AuthUserEntity({
+    String uid,
     String name,
     String email,
     String profilePhoto,
     String password,
-  }) : super(name: name, email: email, profilePhoto: profilePhoto) {
+  }) : super(uid: uid, name: name, email: email, profilePhoto: profilePhoto) {
     this.password = password;
   }
 

@@ -4,6 +4,7 @@ final _box = GetStorage();
 
 const userType = 'userType';
 const isNotFirstTimeAccess = 'isNotFirstTimeAccess';
+const loggedUserUid = 'loggedUserUid';
 
 Future<bool> init() => GetStorage.init();
 
