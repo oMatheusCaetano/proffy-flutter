@@ -9,7 +9,7 @@ const String Study = '/study';
 final routes = [
   GetPage(name: AppLoader, page: () => AppLoaderPage()),
   GetPage(name: OnBoarding, page: () => OnBoardingPage()),
-  GetPage(name: Login, page: () => LoginPage()),
+  GetPage(name: '$Login/:userType', page: () => LoginPage()),
   GetPage(name: Study, page: () => StudyPage()),
   GetPage(name: Home, page: () => HomePage()),
 ];

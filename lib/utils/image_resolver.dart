@@ -26,7 +26,4 @@ assetImg(String name, {Color color, double height, double width}) {
       : SvgPicture.asset(name, color: color, height: height, width: width);
 }
 
-bool _isImage(String name) {
-  final ext = name.substring(name.length - 3);
-  return ext == imagesExt;
-}
+bool _isImage(String name) => name.endsWith(imagesExt);
