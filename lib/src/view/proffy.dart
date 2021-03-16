@@ -7,6 +7,8 @@ import 'package:proffy/router/routes.dart' as router;
 class Proffy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AppTheme.setSystemTheme();
+
     return GetMaterialApp(
       title: 'Proffy',
       theme: AppTheme.theme,
