@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import 'package:proffy/src/data/data_sources/auth_user_data_source_impl.dart';
@@ -15,8 +17,12 @@ class Injection implements Bindings {
 
   @override
   void dependencies() {
+    //! External packages
+    Get.put<FirebaseAuth>(FirebaseAuth.instance);
+    Get.put<FirebaseFirestore>(FirebaseFirestore.instance);
+
     //! Data sources
-    Get.put<AuthUserDataSource>(AuthUserDataSourceImpl());
+    Get.put<AuthUserDataSource>(AuthUserDataSourceImpl(Get.find(), Get.find()));
 
     //! Repositories
     Get.put<AuthUserRepository>(AuthUserRepositoryImpl(Get.find()));

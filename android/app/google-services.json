@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "577612332907",
+    "project_id": "omatheuscaetano-proffy",
+    "storage_bucket": "omatheuscaetano-proffy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577612332907:android:2fc59720ccbc804f2a562e",
+        "android_client_info": {
+          "package_name": "com.example.proffy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577612332907-poja3fh1m2ini0vpl6mdi7nqeseqb1em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHV3IFp7pYmNL71ilnqhQ9bVYBek8I0lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577612332907-poja3fh1m2ini0vpl6mdi7nqeseqb1em.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

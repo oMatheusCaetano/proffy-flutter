@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:proffy/src/data/models/auth_user.dart';
+import 'package:proffy/src/domain/exceptions/form_data_exception.dart';
 import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
 import 'package:proffy/router/router.dart' as router;
 
 class LoginPageController extends GetxController {
-  final AuthUserRepository authUserRepository;
+  final AuthUserRepository _authUserRepository;
   final formKey = GlobalKey<FormState>();
+  final errorMessage = ''.obs;
   final user = AuthUser(name: '', email: '', password: '');
 
-  LoginPageController(this.authUserRepository);
+  LoginPageController(this._authUserRepository);
 
   void handleLoginButtonClick() async {
-    print(user.name);
-    print(user.email);
-    print(user.password);
+    try {
+      await this._authUserRepository.login(user);
+    } on FormDataException catch (exception) {
+      this.errorMessage.value = exception.message;
+    }
   }
 }
