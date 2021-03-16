@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:proffy/src/view/utils/app_theme.dart';
 import 'package:proffy/router/routes.dart' as router;
+import 'package:proffy/utils/env.dart' as env;
 
 class Proffy extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class Proffy extends StatelessWidget {
     AppTheme.setSystemTheme();
 
     return GetMaterialApp(
-      title: 'Proffy',
+      title: env.appName,
       theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
       initialRoute: router.AppLoader,
