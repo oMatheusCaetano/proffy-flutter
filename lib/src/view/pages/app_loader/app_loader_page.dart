@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:proffy/src/view/utils/app_theme.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
-import 'package:proffy/utils/image_resolver.dart';
+import 'package:proffy/utils/image_resolver.dart' as image;
 
 class AppLoaderPage extends StatelessWidget {
   @override
@@ -15,7 +15,7 @@ class AppLoaderPage extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           padding: EdgeInsets.all(20),
-          child: ImageResolver.assetImg(ImageResolver.splash),
+          child: image.assetImg(image.splash),
         ),
       ),
     );
