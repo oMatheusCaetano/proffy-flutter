@@ -32,7 +32,7 @@ class OnBoardingPageController extends GetxController {
 
   void handleNextPage(Duration duration, Curve curve) {
     if (screenIndex.value == screenData.length - 1)
-      router.offNamed(router.Home);
+      router.offAllNamed(router.Home);
     else
       pageController.animateToPage(
         ++screenIndex.value,

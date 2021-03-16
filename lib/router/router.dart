@@ -8,3 +8,4 @@ import 'package:proffy/src/view/pages/study/study_page.dart';
 part 'routes.dart';
 
 offNamed(String page, {args}) => Get.offNamed(page, arguments: args);
+offAllNamed(String page, {args}) => Get.offAllNamed(page, arguments: args);

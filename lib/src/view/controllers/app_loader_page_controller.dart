@@ -26,8 +26,8 @@ class AppLoaderPageController extends GetxController {
 
   void _handleAuthenticationCheck() {
     this._authUserRepository.getCurrentUser() == null
-        ? router.offNamed(router.Login)
-        : router.offNamed(router.Study);
+        ? router.offAllNamed(router.Login)
+        : router.offAllNamed(router.Study);
   }
 
   @override
