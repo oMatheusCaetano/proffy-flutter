@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 const imagesPath = 'assets/img';
 const imagesExt = 'png';
 
-const iconsPath = 'assets/images/svg';
-const iconsExt = 'svg';
-
 const splash = '$imagesPath/splash_screen.$imagesExt';
+
+const iconsPath = 'assets/svg';
+const iconsExt = 'svg';
 
 const logo = '$iconsPath/logo.$iconsExt';
 const hero = '$iconsPath/hero.$iconsExt';
