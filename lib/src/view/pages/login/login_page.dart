@@ -42,14 +42,15 @@ class LoginPage extends StatelessWidget {
                       children: [
                         Input(
                           label: 'E-mail',
-                          onChanged: (value) => controller.user.email = value,
+                          validator: controller.emailFieldValidation,
+                          onChanged: (v) => controller.user.email = v,
                         ),
                         SizedBox(height: 20),
                         Input(
                           label: 'Senha',
                           obscure: true,
-                          onChanged: (value) =>
-                              controller.user.password = value,
+                          validator: controller.passwordFieldValidation,
+                          onChanged: (v) => controller.user.password = v,
                         ),
                       ],
                     ),
