@@ -1,17 +1,31 @@
 import 'package:get/get.dart';
+import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
 
 import 'package:proffy/utils/storage.dart' as storage;
 import 'package:proffy/router/router.dart' as router;
 
 class AppLoaderPageController extends GetxController {
+  final AuthUserRepository _authUserRepository;
+
+  AppLoaderPageController(this._authUserRepository);
+
   Future<void> _handleFirstTimeAccessCheck() async {
-    await storage.has('isNotFirstTimeAccess')
-        ? this._handleAuthenticationCheck()
-        : router.offNamed(router.OnBoarding);
+    final isNotFirstTimeAccess = 'isNotFirstTimeAccess';
+
+    await storage.delete(
+      isNotFirstTimeAccess,
+    ); //! Remove once OnBoadingPage is completed
+
+    if (await storage.has(isNotFirstTimeAccess))
+      this._handleAuthenticationCheck();
+    else {
+      await storage.write(isNotFirstTimeAccess, true);
+      router.offNamed(router.OnBoarding);
+    }
   }
 
   void _handleAuthenticationCheck() {
-    true == true //! TODO: Add user is authenticated validation
+    this._authUserRepository.getCurrentUser() == null
         ? router.offNamed(router.Login)
         : router.offNamed(router.Study);
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:proffy/src/view/controllers/app_loader_page_controller.dart';
 
+import 'package:proffy/src/view/controllers/app_loader_page_controller.dart';
 import 'package:proffy/src/view/utils/app_theme.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
-import 'package:proffy/utils/image_resolver.dart' as image;
 import 'package:proffy/utils/injection.dart';
+import 'package:proffy/utils/image_resolver.dart' as image;
 
 class AppLoaderPage extends StatelessWidget {
   final controller = Injection.find<AppLoaderPageController>();
