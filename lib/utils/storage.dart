@@ -8,6 +8,8 @@ Future<void> write(String key, dynamic value) => _box.write(key, value);
 
 Future<dynamic> read(String key) => Future.value(_box.read(key));
 
+Future<bool> has(String key) => Future.value(_box.hasData(key));
+
 Future<void> delete(String key) => _box.remove(key);
 
 Future<void> destroy() => _box.erase();

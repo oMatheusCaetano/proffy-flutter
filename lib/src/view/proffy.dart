@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:proffy/src/view/utils/app_theme.dart';
-import 'package:proffy/router/routes.dart' as router;
+import 'package:proffy/router/router.dart' as router;
 import 'package:proffy/utils/env.dart' as env;
 
 class Proffy extends StatelessWidget {

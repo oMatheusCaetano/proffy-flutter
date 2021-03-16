@@ -1,8 +1,13 @@
-import 'package:get/get.dart';
-import 'package:proffy/src/view/pages/app_loader/app_loader_page.dart';
+part of 'router.dart';
 
 const String AppLoader = '/app-loader';
+const String OnBoarding = '/on-boarding';
+const String Login = '/login';
+const String Study = '/study';
 
 final routes = [
   GetPage(name: AppLoader, page: () => AppLoaderPage()),
+  GetPage(name: OnBoarding, page: () => OnBoardingPage()),
+  GetPage(name: Login, page: () => LoginPage()),
+  GetPage(name: Study, page: () => StudyPage()),
 ];
