@@ -6,7 +6,7 @@ import 'package:proffy/src/view/utils/app_theme.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
 import 'package:proffy/src/view/widgets/button/button/button.dart';
 import 'package:proffy/src/view/widgets/button/link_button/link_button.dart';
-import 'package:proffy/src/view/widgets/input/input/input.dart';
+import 'package:proffy/src/view/widgets/input/input.dart';
 import 'package:proffy/utils/injection.dart';
 import 'package:proffy/router/router.dart' as router;
 import 'package:proffy/utils/image_resolver.dart' as image;

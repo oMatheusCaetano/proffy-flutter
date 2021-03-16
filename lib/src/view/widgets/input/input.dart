@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:proffy/src/view/widgets/input/input/styles.dart';
+import 'package:proffy/src/view/widgets/input/styles.dart';
 
 class Input extends StatelessWidget with InputStyles {
   final String label;

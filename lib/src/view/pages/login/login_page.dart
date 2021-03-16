@@ -7,10 +7,11 @@ import 'package:proffy/src/view/utils/app_theme.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
 import 'package:proffy/src/view/widgets/button/button/button.dart';
 import 'package:proffy/src/view/widgets/button/link_button/link_button.dart';
-import 'package:proffy/src/view/widgets/input/input/input.dart';
+import 'package:proffy/src/view/widgets/input/input.dart';
 import 'package:proffy/utils/injection.dart';
 import 'package:proffy/router/router.dart' as router;
 import 'package:proffy/utils/image_resolver.dart' as image;
+import 'package:proffy/utils/input_validator.dart';
 
 class LoginPage extends StatelessWidget {
   final controller = Injection.find<LoginPageController>();
@@ -42,14 +43,16 @@ class LoginPage extends StatelessWidget {
                       children: [
                         Input(
                           label: 'E-mail',
-                          validator: controller.emailFieldValidation,
+                          validator: (value) =>
+                              InputValidator(value).notEmpty().email().validate,
                           onChanged: (v) => controller.user.email = v,
                         ),
                         SizedBox(height: 20),
                         Input(
                           label: 'Senha',
                           obscure: true,
-                          validator: controller.passwordFieldValidation,
+                          validator: (value) =>
+                              InputValidator(value).notEmpty().min(6).validate,
                           onChanged: (v) => controller.user.password = v,
                         ),
                       ],
