@@ -10,24 +10,25 @@ class AppLoaderPageController extends GetxController {
   AppLoaderPageController(this._authUserRepository);
 
   Future<void> _handleFirstTimeAccessCheck() async {
-    final isNotFirstTimeAccess = 'isNotFirstTimeAccess';
-
-    await storage.delete(
-      isNotFirstTimeAccess,
-    ); //! Remove once OnBoadingPage is completed
-
-    if (await storage.has(isNotFirstTimeAccess))
+    if (await storage.has(storage.isNotFirstTimeAccess))
       this._handleAuthenticationCheck();
     else {
-      await storage.write(isNotFirstTimeAccess, true);
+      await storage.write(storage.isNotFirstTimeAccess, true);
       router.offNamed(router.OnBoarding);
     }
   }
 
   void _handleAuthenticationCheck() {
     this._authUserRepository.getCurrentUser() == null
-        ? router.offAllNamed(router.Login)
+        ? this._handleUserTypeCheck()
         : router.offAllNamed(router.Study);
+  }
+
+  Future<void> _handleUserTypeCheck() async {
+    final type = await storage.read(storage.userType);
+    type == null
+        ? router.offAllNamed(router.Home)
+        : router.offAllNamed(router.Login, [type]);
   }
 
   @override

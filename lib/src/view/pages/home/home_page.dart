@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'package:proffy/src/domain/entities/user_entity.dart';
+import 'package:proffy/src/view/controllers/home_page_controller.dart';
 import 'package:proffy/src/view/pages/home/styles.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
 import 'package:proffy/src/view/widgets/button/tall_button/tall_button.dart';
 import 'package:proffy/src/view/widgets/text/app_title/app_title.dart';
 import 'package:proffy/src/view/widgets/text/text_end_icon/text_end_icon.dart';
+import 'package:proffy/utils/injection.dart';
 import 'package:proffy/router/router.dart' as router;
 import 'package:proffy/utils/image_resolver.dart' as image;
 
 class HomePage extends StatelessWidget with HomePageStyles {
+  final controller = Injection.find<HomePageController>();
+
   @override
   Widget build(BuildContext context) {
     setDeviceTheme();
@@ -82,7 +86,7 @@ class HomePage extends StatelessWidget with HomePageStyles {
             'Estudar',
             width: (MediaQuery.of(context).size.width * .5) - 48,
             top: image.assetImg(image.study, height: 45),
-            onTap: () => router.toNamed(router.Login, [UserType.Student]),
+            onTap: () => controller.goToLoginPage(UserType.Student),
           ),
           Spacer(),
           TallButton(
@@ -90,7 +94,7 @@ class HomePage extends StatelessWidget with HomePageStyles {
             width: (MediaQuery.of(context).size.width * .5) - 48,
             top: image.assetImg(image.giveClasses, height: 45),
             color: Pallete.secondary,
-            onTap: () => router.toNamed(router.Login, [UserType.Teacher]),
+            onTap: () => controller.goToLoginPage(UserType.Teacher),
           ),
         ],
       ),
