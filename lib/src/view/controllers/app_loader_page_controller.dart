@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
 
+import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
 import 'package:proffy/utils/storage.dart' as storage;
 import 'package:proffy/router/router.dart' as router;
 

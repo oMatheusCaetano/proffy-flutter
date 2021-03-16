@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:proffy/src/domain/data/data_sources/auth_user_data_source_impl.dart';
-import 'package:proffy/src/domain/data/data_sources/contracts/auth_user_data_source.dart';
-import 'package:proffy/src/domain/data/repositories/auth_user_repository_impl.dart';
+import 'package:proffy/src/data/data_sources/auth_user_data_source_impl.dart';
+import 'package:proffy/src/data/data_sources/contracts/auth_user_data_source.dart';
+import 'package:proffy/src/data/repositories/auth_user_repository_impl.dart';
 import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
 
 import 'package:proffy/src/view/controllers/app_loader_page_controller.dart';

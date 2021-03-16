@@ -1,5 +1,5 @@
-import 'package:proffy/src/domain/data/data_sources/contracts/auth_user_data_source.dart';
-import 'package:proffy/src/domain/data/models/user.dart';
+import 'package:proffy/src/data/data_sources/contracts/auth_user_data_source.dart';
+import 'package:proffy/src/data/models/user.dart';
 import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
 
 class AuthUserRepositoryImpl implements AuthUserRepository {
