@@ -8,5 +8,7 @@ class LessonRepositoryImpl implements LessonRepository {
   LessonRepositoryImpl(this._dataSource);
 
   @override
-  Future<List<Lesson>> getAll() => this._dataSource.getAll();
+  Future<List<Lesson>> getAll([Map<String, String> filters]) {
+    return this._dataSource.getAll(filters);
+  }
 }

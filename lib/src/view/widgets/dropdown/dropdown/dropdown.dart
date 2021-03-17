@@ -5,8 +5,9 @@ import 'package:proffy/src/view/widgets/dropdown/dropdown/styles.dart';
 class DropDown extends StatelessWidget with DropDownStyles {
   final String label;
   final String placeholder;
+  final String value;
   final List<DropdownMenuItem<String>> items;
-  final void Function(Object) onChanged;
+  final void Function(String) onChanged;
   final double height;
   final double width;
   final EdgeInsets margin;
@@ -20,6 +21,7 @@ class DropDown extends StatelessWidget with DropDownStyles {
     this.width = double.infinity,
     this.margin,
     this.items,
+    this.value,
   }) : super(key: key);
 
   @override
@@ -39,7 +41,8 @@ class DropDown extends StatelessWidget with DropDownStyles {
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton(
-              onChanged: (a) => onChanged,
+              value: value,
+              onChanged: onChanged,
               hint: Text(placeholder, style: filterInputPlaceholderStyle()),
               items: items,
             ),

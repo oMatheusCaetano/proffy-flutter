@@ -74,43 +74,60 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
                   ),
                 ),
                 withFilters
-                    ? ExpansiontileFilters(
-                        placeholder: 'Filtrar por dia, hora e matéria',
-                        children: [
-                          _buildFilterDropdown(
-                            label: 'Matéria',
-                            onChanged: (a) {},
-                            items: week.weekDays,
-                          ),
-                          SizedBox(height: 10),
-                          _buildFilterDropdown(
-                            label: 'Dia da semana',
-                            onChanged: (a) {},
-                            items: week.weekDays,
-                          ),
-                          SizedBox(height: 30),
-                          Container(
-                            width: double.infinity,
-                            child: Button('Filtrar', onTap: () {}),
-                          ),
-                        ],
+                    ? Obx(
+                        () => ExpansiontileFilters(
+                          placeholder: 'Filtrar por dia, hora e matéria',
+                          children: [
+                            _buildFilterDropdown(
+                              label: 'Matéria',
+                              items: controller.subjects
+                                  .map((e) => e.title)
+                                  .toList(),
+                              value: controller.filters['subject'],
+                              onChanged: (v) {
+                                controller.filters['subject'] = v;
+                              },
+                            ),
+                            SizedBox(height: 10),
+                            _buildFilterDropdown(
+                              label: 'Dia da semana',
+                              value: controller.filters['weekDay'],
+                              onChanged: (v) {
+                                controller.filters['weekDay'] = v;
+                              },
+                              items: week.weekDays,
+                            ),
+                            SizedBox(height: 30),
+                            Container(
+                              width: double.infinity,
+                              child: Button('Filtrar', onTap: () {}),
+                            ),
+                          ],
+                        ),
                       )
                     : SizedBox.shrink(),
               ],
             ),
           ),
-          Stack(
-            children: [
-              Container(height: 60, color: Pallete.primary),
-              Obx(
-                () => Column(
+          controller.lessons.isEmpty
+              ? Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(top: 150),
+                  child: Text('Nenhum dado encontrado'),
+                )
+              : Stack(
                   children: [
-                    for (var lesson in controller.lessons) LessonCard(lesson)
+                    Container(height: 60, color: Pallete.primary),
+                    Obx(
+                      () => Column(
+                        children: [
+                          for (var lesson in controller.lessons)
+                            LessonCard(lesson)
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              ),
-            ],
-          ),
         ],
       ),
     );
@@ -129,18 +146,20 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
   DropDown _buildFilterDropdown({
     String label = '',
     String placeholder = 'Selecione',
-    void Function(Object) onChanged,
+    String value,
+    void Function(String) onChanged,
     List<String> items,
   }) {
     return DropDown(
       label: label,
       placeholder: placeholder,
+      value: value.isEmpty ? null : value,
       onChanged: onChanged,
       items: [
         for (final item in items)
           DropdownMenuItem(
             child: Text(item, style: dropdownItemStyle()),
-            value: item.toLowerCase(),
+            value: item,
           )
       ],
     );
