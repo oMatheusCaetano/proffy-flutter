@@ -109,28 +109,35 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
               ],
             ),
           ),
-          controller.lessons.isEmpty
-              ? Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 150),
-                  child: Text('Nenhum dado encontrado'),
-                )
-              : Stack(
-                  children: [
-                    Container(height: 60, color: Pallete.primary),
-                    Obx(
-                      () => Column(
+          Obx(
+            () => _hasNoDataToDisplay()
+                ? Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(top: 150),
+                    child: Text('Nenhum dado encontrado'),
+                  )
+                : Stack(
+                    children: [
+                      Container(height: 60, color: Pallete.primary),
+                      Column(
                         children: [
-                          for (var lesson in controller.lessons)
+                          for (final lesson in controller.screenIndex.value == 0
+                              ? controller.lessons
+                              : controller.favorites)
                             LessonCard(lesson)
                         ],
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+          ),
         ],
       ),
     );
+  }
+
+  bool _hasNoDataToDisplay() {
+    return (controller.lessons.isEmpty && controller.screenIndex.value == 0) ||
+        (controller.favorites.isEmpty && controller.screenIndex.value == 1);
   }
 
   AppTitle _buildTitleLine(String text) {

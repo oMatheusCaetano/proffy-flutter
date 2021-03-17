@@ -12,6 +12,7 @@ class StudyPageController extends GetxController {
 
   final screenIndex = 0.obs;
   final lessons = <Lesson>[].obs;
+  final favorites = <Lesson>[].obs;
   final subjects = <Subject>[].obs;
   final RxMap<String, String> filters = {'subject': '', 'weekDay': ''}.obs;
 
