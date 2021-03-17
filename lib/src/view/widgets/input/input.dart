@@ -6,6 +6,7 @@ class Input extends StatelessWidget with InputStyles {
   final double height;
   final double width;
   final bool obscure;
+  final bool light;
   final EdgeInsets margin;
   final void Function(String) onChanged;
   final String Function(String) validator;
@@ -19,6 +20,7 @@ class Input extends StatelessWidget with InputStyles {
     this.onChanged,
     this.obscure = false,
     this.validator,
+    this.light = false,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class Input extends StatelessWidget with InputStyles {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: labelStyle()),
+        Text(label, style: labelStyle(light)),
         SizedBox(height: 4),
         TextFormField(
           validator: validator,

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
 
 mixin InputStyles {
-  TextStyle labelStyle() {
-    return TextStyle(color: Pallete.placeholder, fontSize: 12);
+  TextStyle labelStyle(bool lightBackground) {
+    return TextStyle(
+      color: lightBackground ? Pallete.primary : Pallete.placeholder,
+      fontSize: 12,
+    );
   }
 
   InputDecoration inputDecoration() {
