@@ -34,4 +34,6 @@ class AuthUserDataSourceImpl implements AuthUserDataSource {
     final userData = await this._firestore.collection('users').doc(uid).get();
     return User.fromJson(userData.data());
   }
+
+  Future<void> logout() => this._firebaseAuth.signOut();
 }

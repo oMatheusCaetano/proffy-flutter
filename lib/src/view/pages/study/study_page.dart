@@ -7,6 +7,7 @@ import 'package:proffy/src/view/pages/study/widgets/bottom_navigation_bar/bottom
 import 'package:proffy/src/view/utils/app_theme.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
 import 'package:proffy/src/view/widgets/app_bar/app_app_bar/app_app_bar.dart';
+import 'package:proffy/src/view/widgets/drawer/app_drawer/app_drawer.dart';
 import 'package:proffy/src/view/widgets/button/button/button.dart';
 import 'package:proffy/src/view/widgets/card/lesson_card/lesson_card.dart';
 import 'package:proffy/src/view/widgets/dropdown/dropdown/dropdown.dart';
@@ -24,6 +25,7 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
 
     return Scaffold(
       appBar: AppAppBar(),
+      drawer: AppDrawer(),
       bottomNavigationBar: StudyBottomNavigationBar(),
       body: PageView(
         physics: BouncingScrollPhysics(),

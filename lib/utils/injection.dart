@@ -18,6 +18,7 @@ import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
 import 'package:proffy/src/domain/repositories/lesson_repository.dart';
 import 'package:proffy/src/domain/repositories/subject_repository.dart';
 import 'package:proffy/src/domain/repositories/user_repository.dart';
+import 'package:proffy/src/view/controllers/app_drawer_controller.dart';
 import 'package:proffy/src/view/controllers/app_loader_page_controller.dart';
 import 'package:proffy/src/view/controllers/home_page_controller.dart';
 import 'package:proffy/src/view/controllers/login_page_controller.dart';
@@ -51,6 +52,7 @@ class Injection implements Bindings {
     Get.put<LoginPageController>(LoginPageController(Get.find()));
     Get.put<HomePageController>(HomePageController());
     Get.put<OnBoardingPageController>(OnBoardingPageController());
+    Get.put<AppDrawerController>(AppDrawerController(Get.find()));
     Get.put<StudyPageController>(StudyPageController(Get.find(), Get.find()));
     Get.put<RegisterPageController>(RegisterPageController(
       Get.find(),
