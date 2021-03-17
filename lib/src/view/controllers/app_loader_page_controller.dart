@@ -20,9 +20,11 @@ class AppLoaderPageController extends GetxController {
 
   void _handleAuthenticationCheck() async {
     if (await this._authUserRepository.getCurrentUser() != null)
-      router.offAllNamed(router.Study);
-    await storage.delete(storage.loggedUserUid);
-    this._handleUserTypeCheck();
+      router.offAllNamed(router.Profile);
+    else {
+      await storage.delete(storage.loggedUserUid);
+      this._handleUserTypeCheck();
+    }
   }
 
   Future<void> _handleUserTypeCheck() async {

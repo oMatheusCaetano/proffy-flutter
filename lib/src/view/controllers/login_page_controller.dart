@@ -23,7 +23,7 @@ class LoginPageController extends GetxController {
       this.loading.value = true;
       final loggedUser = await this._authUserRepository.login(user);
       await storage.write(storage.loggedUserUid, loggedUser.uid);
-      router.offAllNamed(router.Study);
+      router.offAllNamed(router.Profile);
     } on FormDataException catch (exception) {
       this.errorMessage.value = exception.message;
     } finally {

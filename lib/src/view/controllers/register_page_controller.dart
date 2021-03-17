@@ -22,7 +22,7 @@ class RegisterPageController extends GetxController {
   Future<void> _login() async {
     final loggedUser = await this._authUserRepository.login(user);
     await storage.write(storage.loggedUserUid, loggedUser.uid);
-    router.offAllNamed(router.Study);
+    router.offAllNamed(router.Profile);
   }
 
   void handleRegisterButtonClick() async {
