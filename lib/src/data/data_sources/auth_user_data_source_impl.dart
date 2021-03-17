@@ -19,17 +19,20 @@ class AuthUserDataSourceImpl implements AuthUserDataSource {
             password: user.password,
           );
 
-      final userData = await this
-          ._firestore
-          .collection('users')
-          .doc(credentials.user.uid)
-          .get();
-
-      return User.fromJson(userData.data());
+      return _getUserfromUid(credentials.user.uid);
     } on firebaseAuth.FirebaseAuthException catch (exception) {
       throw FormDataException(exception.message);
     }
   }
 
-  Future<User> getCurrentUser() => null;
+  Future<User> getCurrentUser() async {
+    await this._firebaseAuth.signOut();
+    final currentUser = this._firebaseAuth.currentUser;
+    return currentUser == null ? null : _getUserfromUid(currentUser.uid);
+  }
+
+  Future<User> _getUserfromUid(String uid) async {
+    final userData = await this._firestore.collection('users').doc(uid).get();
+    return User.fromJson(userData.data());
+  }
 }

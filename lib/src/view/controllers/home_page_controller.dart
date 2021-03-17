@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'package:proffy/src/domain/entities/user_entity.dart';
+import 'package:proffy/src/domain/entities/enums.dart';
 import 'package:proffy/utils/storage.dart' as storage;
 import 'package:proffy/router/router.dart' as router;
 

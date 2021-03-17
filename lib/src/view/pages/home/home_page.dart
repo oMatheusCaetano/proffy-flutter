@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proffy/src/domain/entities/enums.dart';
 
-import 'package:proffy/src/domain/entities/user_entity.dart';
 import 'package:proffy/src/view/controllers/home_page_controller.dart';
 import 'package:proffy/src/view/pages/home/styles.dart';
 import 'package:proffy/src/view/utils/pallete.dart';
@@ -8,7 +8,6 @@ import 'package:proffy/src/view/widgets/button/tall_button/tall_button.dart';
 import 'package:proffy/src/view/widgets/text/app_title/app_title.dart';
 import 'package:proffy/src/view/widgets/text/text_end_icon/text_end_icon.dart';
 import 'package:proffy/utils/injection.dart';
-import 'package:proffy/router/router.dart' as router;
 import 'package:proffy/utils/image_resolver.dart' as image;
 
 class HomePage extends StatelessWidget with HomePageStyles {

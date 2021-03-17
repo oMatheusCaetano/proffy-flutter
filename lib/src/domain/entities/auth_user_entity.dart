@@ -1,3 +1,4 @@
+import 'package:proffy/src/domain/entities/enums.dart';
 import 'package:proffy/src/domain/entities/user_entity.dart';
 
 abstract class AuthUserEntity extends UserEntity {

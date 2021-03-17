@@ -1,7 +1,11 @@
 import 'dart:convert';
 
+import 'package:json_annotation/json_annotation.dart';
 import 'package:proffy/src/domain/entities/auth_user_entity.dart';
 
+part 'auth_user.g.dart';
+
+@JsonSerializable()
 class AuthUser extends AuthUserEntity {
   AuthUser({
     String uid,
@@ -18,28 +22,14 @@ class AuthUser extends AuthUserEntity {
         );
 
   factory AuthUser.fromJson(Map<String, dynamic> json) {
-    return AuthUser(
-      uid: json['uid'],
-      name: json['name'],
-      email: json['email'],
-      profilePhoto: json['profilePhoto'],
-      password: json['password'],
-    );
+    return _$AuthUserFromJson(json);
   }
 
   factory AuthUser.fromJsonString(String jsonString) {
     return AuthUser.fromJson(json.decode(jsonString));
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'uid': this.uid,
-      'name': this.name,
-      'email': this.email,
-      'profilePhoto': this.profilePhoto,
-      'password': this.password,
-    };
-  }
+  Map<String, dynamic> toJson() => _$AuthUserToJson(this);
 
   String toJsonString() => json.encode(this.toJson());
 }

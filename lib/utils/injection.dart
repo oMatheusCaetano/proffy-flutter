@@ -30,7 +30,7 @@ class Injection implements Bindings {
     //! Controllers
     Get.put<AppLoaderPageController>(AppLoaderPageController(Get.find()));
     Get.put<LoginPageController>(LoginPageController(Get.find()));
-    Get.put<RegisterPageController>(RegisterPageController());
+    Get.put<RegisterPageController>(RegisterPageController(Get.find()));
     Get.put<HomePageController>(HomePageController());
     Get.put<OnBoardingPageController>(OnBoardingPageController());
   }

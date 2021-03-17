@@ -1,5 +1,3 @@
-enum UserType { Teacher, Student, Auth }
-
 abstract class UserEntity {
   String _uid;
   String _name;
