@@ -26,7 +26,6 @@ class AuthUserDataSourceImpl implements AuthUserDataSource {
   }
 
   Future<User> getCurrentUser() async {
-    await this._firebaseAuth.signOut();
     final currentUser = this._firebaseAuth.currentUser;
     return currentUser == null ? null : _getUserfromUid(currentUser.uid);
   }

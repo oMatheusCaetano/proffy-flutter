@@ -4,8 +4,12 @@ import 'package:get/get.dart';
 
 import 'package:proffy/src/data/data_sources/auth_user_data_source_impl.dart';
 import 'package:proffy/src/data/data_sources/contracts/auth_user_data_source.dart';
+import 'package:proffy/src/data/data_sources/contracts/user_data_source.dart';
+import 'package:proffy/src/data/data_sources/user_data_source_impl.dart';
 import 'package:proffy/src/data/repositories/auth_user_repository_impl.dart';
+import 'package:proffy/src/data/repositories/user_repository_impl.dart';
 import 'package:proffy/src/domain/repositories/auth_user_repository.dart';
+import 'package:proffy/src/domain/repositories/user_repository.dart';
 import 'package:proffy/src/view/controllers/app_loader_page_controller.dart';
 import 'package:proffy/src/view/controllers/home_page_controller.dart';
 import 'package:proffy/src/view/controllers/login_page_controller.dart';
@@ -23,15 +27,20 @@ class Injection implements Bindings {
 
     //! Data sources
     Get.put<AuthUserDataSource>(AuthUserDataSourceImpl(Get.find(), Get.find()));
+    Get.put<UserDataSource>(UserDataSourceImpl(Get.find(), Get.find()));
 
     //! Repositories
     Get.put<AuthUserRepository>(AuthUserRepositoryImpl(Get.find()));
+    Get.put<UserRepository>(UserRepositoryImpl(Get.find()));
 
     //! Controllers
     Get.put<AppLoaderPageController>(AppLoaderPageController(Get.find()));
     Get.put<LoginPageController>(LoginPageController(Get.find()));
-    Get.put<RegisterPageController>(RegisterPageController(Get.find()));
     Get.put<HomePageController>(HomePageController());
     Get.put<OnBoardingPageController>(OnBoardingPageController());
+    Get.put<RegisterPageController>(RegisterPageController(
+      Get.find(),
+      Get.find(),
+    ));
   }
 }

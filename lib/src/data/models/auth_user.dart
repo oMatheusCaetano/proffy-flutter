@@ -29,7 +29,9 @@ class AuthUser extends AuthUserEntity {
     return AuthUser.fromJson(json.decode(jsonString));
   }
 
-  Map<String, dynamic> toJson() => _$AuthUserToJson(this);
+  Map<String, dynamic> toJson() {
+    return _$AuthUserToJson(this)..addAll({'type': this.type.toString()});
+  }
 
   String toJsonString() => json.encode(this.toJson());
 }

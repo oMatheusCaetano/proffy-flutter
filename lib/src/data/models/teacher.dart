@@ -31,7 +31,9 @@ class Teacher extends TeacherEntity {
     return Teacher.fromJson(json.decode(jsonString));
   }
 
-  Map<String, dynamic> toJson() => _$TeacherToJson(this);
+  Map<String, dynamic> toJson() {
+    return _$TeacherToJson(this)..addAll({'type': this.type.toString()});
+  }
 
   String toJsonString() => json.encode(this.toJson());
 
