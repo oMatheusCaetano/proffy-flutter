@@ -102,7 +102,10 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
                             SizedBox(height: 30),
                             Container(
                               width: double.infinity,
-                              child: Button('Filtrar', onTap: () {}),
+                              child: Button(
+                                'Filtrar',
+                                onTap: controller.filter,
+                              ),
                             ),
                           ],
                         ),
@@ -165,6 +168,10 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
       value: value.isEmpty ? null : value,
       onChanged: onChanged,
       items: [
+        DropdownMenuItem(
+          child: Text(placeholder, style: dropdownItemStyle()),
+          value: '',
+        ),
         for (final item in items)
           DropdownMenuItem(
             child: Text(item, style: dropdownItemStyle()),
