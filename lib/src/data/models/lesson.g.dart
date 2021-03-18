@@ -8,6 +8,7 @@ part of 'lesson.dart';
 
 Lesson _$LessonFromJson(Map<String, dynamic> json) {
   return Lesson(
+    uid: json['uid'] as String,
     subject: json['subject'] == null
         ? null
         : Subject.fromJson(json['subject'] as Map<String, dynamic>),
@@ -20,6 +21,7 @@ Lesson _$LessonFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$LessonToJson(Lesson instance) => <String, dynamic>{
+      'uid': instance.uid,
       'weekDay': instance.weekDay,
       'price': instance.price,
       'subject': instance.subject,

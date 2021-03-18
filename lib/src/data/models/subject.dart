@@ -8,7 +8,7 @@ part 'subject.g.dart';
 
 @JsonSerializable()
 class Subject extends SubjectEntity {
-  Subject({String title}) : super(title: title);
+  Subject({String uid, String title}) : super(uid: uid, title: title);
 
   factory Subject.fromJson(Map<String, dynamic> json) =>
       _$SubjectFromJson(json);

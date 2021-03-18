@@ -11,11 +11,13 @@ part 'lesson.g.dart';
 @JsonSerializable()
 class Lesson extends LessonEntity {
   Lesson({
+    String uid,
     Subject subject,
     Teacher teacher,
     String weekDay,
     double price,
   }) : super(
+          uid: uid,
           subject: subject,
           teacher: teacher,
           weekDay: weekDay,

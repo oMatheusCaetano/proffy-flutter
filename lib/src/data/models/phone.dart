@@ -8,7 +8,7 @@ part 'phone.g.dart';
 
 @JsonSerializable()
 class Phone extends PhoneEntity {
-  Phone({String number}) : super(number: number);
+  Phone({String uid, String number}) : super(uid: uid, number: number);
 
   factory Phone.fromJson(Map<String, dynamic> json) => _$PhoneFromJson(json);
 
