@@ -14,11 +14,13 @@ Lesson _$LessonFromJson(Map<String, dynamic> json) {
     teacher: json['teacher'] == null
         ? null
         : Teacher.fromJson(json['teacher'] as Map<String, dynamic>),
+    weekDay: json['weekDay'] as String,
     price: (json['price'] as num)?.toDouble(),
   );
 }
 
 Map<String, dynamic> _$LessonToJson(Lesson instance) => <String, dynamic>{
+      'weekDay': instance.weekDay,
       'price': instance.price,
       'subject': instance.subject,
       'teacher': instance.teacher,

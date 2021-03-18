@@ -13,8 +13,14 @@ class Lesson extends LessonEntity {
   Lesson({
     Subject subject,
     Teacher teacher,
+    String weekDay,
     double price,
-  }) : super(subject: subject, teacher: teacher, price: price);
+  }) : super(
+          subject: subject,
+          teacher: teacher,
+          weekDay: weekDay,
+          price: price,
+        );
 
   factory Lesson.fromJson(Map<String, dynamic> json) {
     return _$LessonFromJson(json);
