@@ -132,6 +132,7 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
                             LessonCard(
                               lesson,
                               onIconButtonTap: controller.updateLesson,
+                              isFavorite: controller.isFavorite(lesson),
                             )
                         ],
                       ),

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proffy/src/data/data_sources/contracts/lesson_data_source.dart';
 import 'package:proffy/src/data/data_sources/contracts/user_data_source.dart';
 import 'package:proffy/src/data/models/lesson.dart';
+import 'package:proffy/utils/storage.dart' as storage;
 
 class LessonDataSourceImpl implements LessonDataSource {
   final FirebaseFirestore _firestore;
@@ -28,13 +29,17 @@ class LessonDataSourceImpl implements LessonDataSource {
   }
 
   @override
-  Future<List<Lesson>> getFavorites() {
-    return Future.value([]);
-  }
+  Future<List<Lesson>> getFavorites() async {
+    String userUid = await storage.read(storage.loggedUserUid);
+    final user = await this._userDataSource.getUserMapfromUid(userUid);
+    final lessons = [];
 
-  @override
-  Future<Lesson> update(Lesson lesson) {
-    return Future.value(lesson);
+    for (var uid in user['favoriteLessonsIds']) {
+      final lesson = await this._firestore.collection('lessons').doc(uid).get();
+      lessons.add(lesson.data());
+    }
+
+    return lessons.map((e) => Lesson.fromJson(e..['teacher'] = user)).toList();
   }
 
   Query _handleFilters(Query query, Map<String, String> filters) {

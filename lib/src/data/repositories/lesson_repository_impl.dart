@@ -14,7 +14,4 @@ class LessonRepositoryImpl implements LessonRepository {
 
   @override
   Future<List<Lesson>> getFavorites() => this._dataSource.getFavorites();
-
-  @override
-  Future<Lesson> update(Lesson lesson) => this._dataSource.update(lesson);
 }

@@ -13,9 +13,15 @@ import 'package:proffy/utils/image_resolver.dart' as image;
 class LessonCard extends StatelessWidget with LessonCardStyles {
   final imagePath = 'https://thispersondoesnotexist.com/image';
   final Lesson lesson;
+  final bool isFavorite;
   final void Function(Lesson) onIconButtonTap;
 
-  LessonCard(this.lesson, {Key key, this.onIconButtonTap}) : super(key: key);
+  LessonCard(
+    this.lesson, {
+    Key key,
+    this.onIconButtonTap,
+    this.isFavorite = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +77,8 @@ class LessonCard extends StatelessWidget with LessonCardStyles {
                       AppIconButton(
                         image.heartOutlined,
                         onTap: () => onIconButtonTap(lesson),
+                        backgroundColor:
+                            isFavorite ? Pallete.error : Pallete.primary,
                       ),
                       SizedBox(width: 10),
                       IconTextButton(

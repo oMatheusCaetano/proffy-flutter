@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:proffy/src/data/models/lesson.dart';
 
 import 'package:proffy/src/data/models/phone.dart';
 import 'package:proffy/src/domain/entities/teacher_entity.dart';
@@ -15,12 +16,14 @@ class Teacher extends TeacherEntity {
     String profilePhoto,
     Phone phone,
     String bio,
+    List<Lesson> favoriteLessons,
   }) : super(
           name: name,
           email: email,
           profilePhoto: profilePhoto,
           bio: bio,
           phone: phone,
+          favoriteLessons: favoriteLessons,
         );
 
   factory Teacher.fromJson(Map<String, dynamic> json) {
@@ -39,4 +42,8 @@ class Teacher extends TeacherEntity {
 
   @override
   Phone get phone => super.phone as Phone;
+
+  @override
+  List<Lesson> get favoriteLessons =>
+      super.favoriteLessons.map((e) => e as Lesson).toList();
 }

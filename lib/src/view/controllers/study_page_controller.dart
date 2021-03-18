@@ -5,9 +5,11 @@ import 'package:proffy/src/data/models/lesson.dart';
 import 'package:proffy/src/data/models/subject.dart';
 import 'package:proffy/src/domain/repositories/lesson_repository.dart';
 import 'package:proffy/src/domain/repositories/subject_repository.dart';
+import 'package:proffy/src/domain/repositories/user_repository.dart';
 
 class StudyPageController extends GetxController {
   final LessonRepository _lessonRepository;
+  final UserRepository _userRepository;
   final SubjectRepository _subjectRepository;
 
   final screenIndex = 0.obs;
@@ -18,7 +20,11 @@ class StudyPageController extends GetxController {
 
   final pageController = PageController();
 
-  StudyPageController(this._lessonRepository, this._subjectRepository);
+  StudyPageController(
+    this._lessonRepository,
+    this._subjectRepository,
+    this._userRepository,
+  );
 
   void changeScreenIndex(int index) => this.screenIndex.value = index;
   bool isCurrentScreen(int index) => this.screenIndex.value == index;
@@ -33,7 +39,9 @@ class StudyPageController extends GetxController {
   }
 
   Future<void> updateLesson(Lesson lesson) async {
-    await this._lessonRepository.update(lesson);
+    this.isFavorite(lesson)
+        ? await this._userRepository.removeFavorite(lesson)
+        : await this._userRepository.addFavorite(lesson);
     lessons.assignAll(await this._lessonRepository.getAll(this.filters));
     favorites.assignAll(await this._lessonRepository.getFavorites());
   }
@@ -44,6 +52,13 @@ class StudyPageController extends GetxController {
 
   Future<void> _getSubjects() async {
     subjects.assignAll(await this._subjectRepository.getAll());
+  }
+
+  bool isFavorite(Lesson lesson) {
+    for (var item in favorites) {
+      if (item.uid == lesson.uid) return true;
+    }
+    return false;
   }
 
   @override
