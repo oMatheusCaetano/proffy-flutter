@@ -32,4 +32,10 @@ class UserDataSourceImpl implements UserDataSource {
       throw FormDataException(exception.message);
     }
   }
+
+  Future<Map<String, dynamic>> getUserMapfromUid(String uid) async {
+    final teacherSnapshot =
+        await this._firestore.collection('users').doc(uid).get();
+    return teacherSnapshot.data();
+  }
 }

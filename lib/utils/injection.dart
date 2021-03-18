@@ -38,7 +38,7 @@ class Injection implements Bindings {
     //! Data sources
     Get.put<AuthUserDataSource>(AuthUserDataSourceImpl(Get.find(), Get.find()));
     Get.put<UserDataSource>(UserDataSourceImpl(Get.find(), Get.find()));
-    Get.put<LessonDataSource>(LessonDataSourceImpl(Get.find()));
+    Get.put<LessonDataSource>(LessonDataSourceImpl(Get.find(), Get.find()));
     Get.put<SubjectDataSource>(SubjectDataSourceImpl(Get.find()));
 
     //! Repositories

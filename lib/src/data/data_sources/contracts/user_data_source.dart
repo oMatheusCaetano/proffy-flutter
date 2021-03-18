@@ -3,4 +3,5 @@ import 'package:proffy/src/domain/entities/enums.dart';
 
 abstract class UserDataSource {
   Future<dynamic> create(AuthUser user, UserType type);
+  Future<Map<String, dynamic>> getUserMapfromUid(String uid);
 }
