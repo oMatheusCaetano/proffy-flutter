@@ -11,4 +11,10 @@ class LessonRepositoryImpl implements LessonRepository {
   Future<List<Lesson>> getAll([Map<String, String> filters]) {
     return this._dataSource.getAll(filters);
   }
+
+  @override
+  Future<List<Lesson>> getFavorites() => this._dataSource.getFavorites();
+
+  @override
+  Future<Lesson> update(Lesson lesson) => this._dataSource.update(lesson);
 }

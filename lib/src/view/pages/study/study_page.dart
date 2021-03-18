@@ -104,7 +104,7 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
                               width: double.infinity,
                               child: Button(
                                 'Filtrar',
-                                onTap: controller.filter,
+                                onTap: controller.getLessons,
                               ),
                             ),
                           ],
@@ -129,7 +129,10 @@ class StudyPage extends StatelessWidget with StudyPageStyle {
                           for (final lesson in controller.screenIndex.value == 0
                               ? controller.lessons
                               : controller.favorites)
-                            LessonCard(lesson)
+                            LessonCard(
+                              lesson,
+                              onIconButtonTap: controller.updateLesson,
+                            )
                         ],
                       ),
                     ],

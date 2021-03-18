@@ -24,22 +24,33 @@ class StudyPageController extends GetxController {
   bool isCurrentScreen(int index) => this.screenIndex.value == index;
 
   void changeScreen(int index, Duration duration, Curve curve) {
-    pageController.animateToPage(
-      index,
-      duration: duration,
-      curve: curve,
-    );
+    pageController.animateToPage(index, duration: duration, curve: curve);
     changeScreenIndex(index);
   }
 
-  Future<void> filter() async {
+  Future<void> getLessons() async {
     lessons.assignAll(await this._lessonRepository.getAll(this.filters));
+  }
+
+  Future<void> updateLesson(Lesson lesson) async {
+    await this._lessonRepository.update(lesson);
+    lessons.assignAll(await this._lessonRepository.getAll(this.filters));
+    favorites.assignAll(await this._lessonRepository.getFavorites());
+  }
+
+  Future<void> _getFavorites() async {
+    favorites.assignAll(await this._lessonRepository.getFavorites());
+  }
+
+  Future<void> _getSubjects() async {
+    subjects.assignAll(await this._subjectRepository.getAll());
   }
 
   @override
   Future<void> onInit() async {
-    lessons.assignAll(await this._lessonRepository.getAll());
-    subjects.assignAll(await this._subjectRepository.getAll());
+    await this.getLessons();
+    await this._getSubjects();
+    await _getFavorites();
     super.onInit();
   }
 }

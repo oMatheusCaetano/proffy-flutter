@@ -22,4 +22,14 @@ class LessonDataSourceImpl implements LessonDataSource {
     final snapshot = await query.get();
     return snapshot.docs.map((doc) => Lesson.fromJson(doc.data())).toList();
   }
+
+  @override
+  Future<List<Lesson>> getFavorites() {
+    return Future.value([]);
+  }
+
+  @override
+  Future<Lesson> update(Lesson lesson) {
+    return Future.value(lesson);
+  }
 }

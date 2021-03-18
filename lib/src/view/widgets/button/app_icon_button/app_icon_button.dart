@@ -8,12 +8,14 @@ class AppIconButton extends StatelessWidget with AppIconButtonStyles {
   final String icon;
   final double height;
   final Color backgroundColor;
+  final void Function() onTap;
 
   AppIconButton(
     this.icon, {
     Key key,
     this.backgroundColor,
     this.height = 56,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -23,7 +25,7 @@ class AppIconButton extends StatelessWidget with AppIconButtonStyles {
       child: ElevatedButton(
         style: buttonStyle(backgroundColor ?? Pallete.primary),
         child: image.assetImg(image.heartOutlined, height: 20),
-        onPressed: () {},
+        onPressed: onTap,
       ),
     );
   }
