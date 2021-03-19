@@ -26,4 +26,20 @@ assetImg(String name, {Color color, double height, double width}) {
       : SvgPicture.asset(name, color: color, height: height, width: width);
 }
 
+networkImg(String name, {Color color, double height, double width}) {
+  return name == null || name.isEmpty
+      ? Image.network(
+          'https://via.placeholder.com/150',
+          color: color,
+          height: height,
+          width: width,
+        )
+      : Image.network(
+          name,
+          color: color,
+          height: height,
+          width: width,
+        );
+}
+
 bool _isImage(String name) => name.endsWith(imagesExt);

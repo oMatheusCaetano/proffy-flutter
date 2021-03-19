@@ -23,6 +23,7 @@ import 'package:proffy/src/view/controllers/app_loader_page_controller.dart';
 import 'package:proffy/src/view/controllers/home_page_controller.dart';
 import 'package:proffy/src/view/controllers/login_page_controller.dart';
 import 'package:proffy/src/view/controllers/on_boarding_page_controller.dart';
+import 'package:proffy/src/view/controllers/profile_page_controller.dart';
 import 'package:proffy/src/view/controllers/register_page_controller.dart';
 import 'package:proffy/src/view/controllers/study_page_controller.dart';
 
@@ -53,6 +54,11 @@ class Injection implements Bindings {
     Get.put<HomePageController>(HomePageController());
     Get.put<OnBoardingPageController>(OnBoardingPageController());
     Get.put<AppDrawerController>(AppDrawerController(Get.find()));
+    Get.put<ProfilePageController>(ProfilePageController(
+      Get.find(),
+      Get.find(),
+      Get.find(),
+    ));
     Get.put<StudyPageController>(StudyPageController(
       Get.find(),
       Get.find(),

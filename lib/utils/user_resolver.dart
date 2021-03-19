@@ -1,6 +1,7 @@
 import 'package:proffy/src/data/models/auth_user.dart';
 import 'package:proffy/src/data/models/student.dart';
 import 'package:proffy/src/data/models/teacher.dart';
+import 'package:proffy/src/data/models/user.dart';
 import 'package:proffy/src/domain/entities/enums.dart';
 
 dynamic userSpecificationFromUser(
@@ -18,6 +19,13 @@ dynamic userSpecificationFromUser(
     default:
       return null;
   }
+}
+
+dynamic userSpecificationFromType(
+  UserType type, [
+  Map<String, dynamic> data = const {},
+]) {
+  return userSpecificationFromUser(User(), type, data);
 }
 
 UserType userTypeStringtoUserType(String type) {

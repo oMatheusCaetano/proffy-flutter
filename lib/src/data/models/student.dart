@@ -36,5 +36,5 @@ class Student extends StudentEntity {
 
   @override
   List<Lesson> get favoriteLessons =>
-      super.favoriteLessons.map((e) => e as Lesson).toList();
+      super.favoriteLessons?.map((e) => e as Lesson)?.toList();
 }

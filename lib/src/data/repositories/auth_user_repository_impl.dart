@@ -8,7 +8,7 @@ class AuthUserRepositoryImpl implements AuthUserRepository {
 
   AuthUserRepositoryImpl(this._dataSource);
 
-  Future<User> getCurrentUser() => this._dataSource.getCurrentUser();
+  Future<dynamic> getCurrentUser() => this._dataSource.getCurrentUser();
   Future<User> login(AuthUser user) => this._dataSource.login(user);
   Future<void> logout() => this._dataSource.logout();
 }

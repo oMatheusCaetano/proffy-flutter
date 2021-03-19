@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proffy/src/data/data_sources/contracts/lesson_data_source.dart';
 import 'package:proffy/src/data/data_sources/contracts/user_data_source.dart';
 import 'package:proffy/src/data/models/lesson.dart';
+import 'package:proffy/src/data/models/teacher.dart';
 import 'package:proffy/utils/storage.dart' as storage;
 
 class LessonDataSourceImpl implements LessonDataSource {
@@ -40,6 +41,28 @@ class LessonDataSourceImpl implements LessonDataSource {
     }
 
     return lessons.map((e) => Lesson.fromJson(e..['teacher'] = user)).toList();
+  }
+
+  @override
+  Future<List<Lesson>> fromTeacher(Teacher teacher) async {
+    final lessonsSnapshot = await this
+        ._firestore
+        .collection('lessons')
+        .where('teacherId', isEqualTo: teacher.uid)
+        .get();
+
+    final lessonsData = lessonsSnapshot.docs.map((e) => e.data()).toList();
+    for (var e in lessonsData) {
+      e['teacher'] =
+          await this._userDataSource.getUserMapfromUid(e['teacherId']);
+    }
+
+    return lessonsData.map((lesson) => Lesson.fromJson(lesson)).toList();
+  }
+
+  @override
+  Future<Lesson> createOrUpdate(Lesson lesson) {
+    return Future.value(lesson);
   }
 
   Query _handleFilters(Query query, Map<String, String> filters) {

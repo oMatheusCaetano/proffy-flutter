@@ -45,5 +45,5 @@ class Teacher extends TeacherEntity {
 
   @override
   List<Lesson> get favoriteLessons =>
-      super.favoriteLessons.map((e) => e as Lesson).toList();
+      super.favoriteLessons?.map((e) => e as Lesson)?.toList();
 }

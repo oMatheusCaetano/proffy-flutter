@@ -7,7 +7,9 @@ class Input extends StatelessWidget with InputStyles {
   final double width;
   final bool obscure;
   final bool light;
+  final String initialValue;
   final EdgeInsets margin;
+  final TextInputType keyboardType;
   final void Function(String) onChanged;
   final String Function(String) validator;
 
@@ -21,6 +23,8 @@ class Input extends StatelessWidget with InputStyles {
     this.obscure = false,
     this.validator,
     this.light = false,
+    this.initialValue,
+    this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -31,6 +35,8 @@ class Input extends StatelessWidget with InputStyles {
         Text(label, style: labelStyle(light)),
         SizedBox(height: 4),
         TextFormField(
+          keyboardType: keyboardType,
+          initialValue: initialValue,
           validator: validator,
           obscureText: obscure,
           decoration: inputDecoration(),

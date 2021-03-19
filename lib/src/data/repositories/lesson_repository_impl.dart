@@ -1,5 +1,6 @@
 import 'package:proffy/src/data/data_sources/contracts/lesson_data_source.dart';
 import 'package:proffy/src/data/models/lesson.dart';
+import 'package:proffy/src/data/models/teacher.dart';
 import 'package:proffy/src/domain/repositories/lesson_repository.dart';
 
 class LessonRepositoryImpl implements LessonRepository {
@@ -14,4 +15,14 @@ class LessonRepositoryImpl implements LessonRepository {
 
   @override
   Future<List<Lesson>> getFavorites() => this._dataSource.getFavorites();
+
+  @override
+  Future<List<Lesson>> fromTeacher(Teacher teacher) {
+    return this._dataSource.fromTeacher(teacher);
+  }
+
+  @override
+  Future<Lesson> createOrUpdate(Lesson lesson) {
+    return this._dataSource.createOrUpdate(lesson);
+  }
 }
